@@ -1,0 +1,26 @@
+<section id="briefing" class="section briefing-section" aria-labelledby="briefing-heading">
+  <div class="container briefing-grid">
+    <div class="briefing-intro">
+      <h2 id="briefing-heading">Toda boa conexão começa com uma conversa.</h2>
+      <p>Conte o que precisa mudar no seu negócio. Organize as primeiras ideias para um projeto e um futuro pedido de orçamento.</p>
+      <div class="contact-notice"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M12 11v6m0-10v1" stroke="currentColor" stroke-width="1.5"/></svg><p>{{ contactNotice }}</p></div>
+      <p class="privacy-note">Seus dados permanecem nesta página durante o uso. Não há envio, armazenamento em servidor ou salvamento automático. Ao recarregar, o conteúdo é apagado. Evite informações sensíveis.</p>
+    </div>
+    <div class="briefing-workspace">
+      <form [formGroup]="form" (ngSubmit)="generate()" novalidate>
+        <h3>Prepare seu briefing</h3>
+        <p class="form-note">Os campos com * são obrigatórios.</p>
+        <div class="field"><label for="business">Nome do negócio ou atividade *</label><input id="business" formControlName="business" required autocomplete="organization" maxlength="120" placeholder="Como você apresenta seu trabalho?" [attr.aria-invalid]="invalid('business')" [attr.aria-describedby]="invalid('business') ? 'business-error' : null">@if (invalid('business')) { <p id="business-error" class="error">Informe o negócio ou atividade com pelo menos 2 caracteres.</p> }</div>
+        <div class="field"><label for="service">Qual solução te interessa? *</label><div class="select-wrap"><select id="service" formControlName="service" required [attr.aria-invalid]="invalid('service')" [attr.aria-describedby]="invalid('service') ? 'service-error' : null"><option value="" disabled>Selecione uma solução</option>@for (service of services; track service.id) { <option [value]="service.id">{{ service.title }}</option> }</select><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 8 5 5 5-5"/></svg></div>@if (invalid('service')) { <p id="service-error" class="error">Selecione a solução que mais se aproxima da sua necessidade.</p> }</div>
+        <div class="field"><label for="objective">O que você precisa resolver? *</label><textarea id="objective" formControlName="objective" required rows="4" maxlength="2000" placeholder="Conte como é hoje e o que você gostaria de melhorar." [attr.aria-invalid]="invalid('objective')" aria-describedby="objective-help objective-error"></textarea><span id="objective-help" class="field-help">De 20 a 2.000 caracteres. Não inclua senhas ou dados confidenciais.</span><p id="objective-error" class="error" [hidden]="!invalid('objective')">Descreva sua necessidade com pelo menos 20 caracteres.</p></div>
+        <div class="field"><label for="timeframe">Quando gostaria de começar?</label><div class="select-wrap"><select id="timeframe" formControlName="timeframe"><option>A definir em conjunto</option><option>Assim que possível</option><option>Nos próximos 3 meses</option><option>Estou planejando para mais adiante</option></select><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 8 5 5 5-5"/></svg></div></div>
+        <button class="button primary" type="submit">Gerar meu briefing</button>
+        <p class="local-note">Geração local. Nenhuma mensagem será enviada.</p>
+      </form>
+      <p class="feedback" role="status" aria-live="polite">{{ feedback() }}</p>
+      @if (generated()) {
+        <div class="briefing-result"><label for="briefing-result">Seu briefing de projeto</label><textarea #resultElement id="briefing-result" readonly [value]="generated()" rows="10"></textarea><div class="result-actions"><button type="button" class="button primary" (click)="download()">Baixar arquivo .txt</button><button type="button" class="button secondary" (click)="copy()">Copiar texto</button></div></div>
+      }
+    </div>
+  </div>
+</section>

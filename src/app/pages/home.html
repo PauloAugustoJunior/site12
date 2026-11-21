@@ -1,0 +1,23 @@
+<nexo-hero />
+<section id="sobre" class="section about" aria-labelledby="about-heading">
+  <div class="container about-grid">
+    <div class="about-title"><span class="nexo-symbol" aria-hidden="true"><svg viewBox="0 0 100 100" fill="none"><path d="M15 85V40a25 25 0 0 1 25-25h45v45a25 25 0 0 1-25 25H15Zm0 0 70-70" stroke="currentColor" stroke-width="12"/></svg></span><h2 id="about-heading">Tecnologia com contexto.<br>Do seu negócio.</h2></div>
+    <div class="about-copy"><p class="lead">A Nexo conecta estratégia e execução para criar soluções que fazem sentido na sua realidade.</p><p>Somos uma empresa brasileira de soluções tecnológicas. Unimos desenvolvimento de software, dados, automação e inteligência artificial para apoiar empresas e profissionais que querem evoluir com clareza.</p><p>Pode ser um site, um processo que precisa fluir ou um sistema completo. Começamos entendendo a necessidade, definimos prioridades e construímos o caminho com você.</p><a href="#processo" class="text-link">Conheça nosso jeito de trabalhar</a></div>
+  </div>
+  <div class="container principles"><div><h3>O negócio orienta.</h3><p>A ferramenta vem depois de entender o desafio.</p></div><div><h3>O escopo dá clareza.</h3><p>Decisões, entregas e prioridades alinhadas desde o início.</p></div><div><h3>As soluções se conectam.</h3><p>Cada projeto pode abrir espaço para uma próxima evolução.</p></div></div>
+</section>
+<nexo-services (selectService)="chooseService($event)" />
+<nexo-journey />
+<section id="processo" class="section process" aria-labelledby="process-heading">
+  <div class="container"><div class="section-heading"><h2 id="process-heading">Método para tirar boas ideias do papel.</h2><p>Da primeira conversa à entrega, um processo que aproxima pessoas, decisões e tecnologia.</p></div>
+    <ol class="process-list">@for (step of process; track step.title; let i = $index) { <li><span class="step-number" aria-hidden="true">{{ i + 1 }}</span><h3>{{ step.title }}</h3><p>{{ step.text }}</p></li> }</ol>
+  </div>
+</section>
+<section class="section applications" aria-labelledby="applications-heading">
+  <div class="container"><div class="section-heading"><h2 id="applications-heading">Imagine isso na sua rotina.</h2><p>Exemplos ilustrativos de aplicação. São possibilidades de solução, não projetos ou resultados reais da Nexo.</p></div>
+    <div class="application-feature"><div class="application-copy"><h3>Da solicitação à visão do negócio.</h3><p>Um cliente preenche seu site. A solicitação chega ao sistema, a equipe é avisada e o histórico fica organizado. Com os dados reunidos, um painel ajuda a acompanhar o atendimento.</p><p>Uma conexão entre presença digital, automação, integrações e dados, desenhada conforme a sua operação.</p><a href="#briefing" class="text-link">Planejar uma solução para minha empresa</a></div><div class="flow-diagram" role="img" aria-label="Exemplo ilustrativo de fluxo: site recebe a solicitação, automação organiza e direciona, sistema centraliza o histórico e dados apoiam decisões."><span class="diagram-note">Fluxo ilustrativo</span><div class="flow-item"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18m-12 0v11"/></svg><div><strong>Seu site</strong><span>Recebe a solicitação</span></div></div><span class="flow-connector"></span><div class="flow-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M8 3 4 7l4 4m12 6H4m12-4 4 4-4 4"/></svg><div><strong>Automação + sistema</strong><span>Organiza e direciona</span></div></div><span class="flow-connector"></span><div class="flow-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V4m0 16h17M9 16v-5m5 5V7m5 9v-8"/></svg><div><strong>Dados e indicadores</strong><span>Apoiam suas decisões</span></div></div></div></div>
+    <div class="other-examples"><article><h3>Conhecimento ao alcance da equipe.</h3><p>Um assistente de IA consulta uma base interna para apoiar dúvidas frequentes, com fontes definidas e revisão humana.</p></article><article><h3>Uma operação com menos ilhas.</h3><p>Um aplicativo e uma plataforma web compartilham informações via APIs para manter o trabalho conectado.</p></article></div>
+  </div>
+</section>
+<section class="section faq" aria-labelledby="faq-heading"><div class="container faq-grid"><h2 id="faq-heading">Vamos esclarecer o próximo passo.</h2><div>@for (item of faq; track item.question) { <details><summary>{{ item.question }}<svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 8 5 5 5-5"/></svg></summary><p>{{ item.answer }}</p></details> }</div></div></section>
+<nexo-briefing [selectedService]="selectedService()" />

@@ -1,0 +1,27 @@
+:host { display: block; position: sticky; top: 0; z-index: 30; }
+header { background: var(--ice); border-bottom: 1px solid var(--line); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; min-height: 100px; gap: 2rem; }
+.brand { display: flex; align-items: center; gap: .65rem; text-decoration: none; flex-shrink: 0; }
+.brand svg { width: 34px; height: 34px; color: var(--blue); }
+.brand span { font-size: 2.7rem; font-weight: 600; letter-spacing: -.04em; line-height: 1; }
+nav { display: flex; align-items: center; gap: 1.8rem; font-size: .94rem; }
+nav a { text-decoration: none; padding-block: .75rem; }
+nav a:hover { color: var(--blue); }
+nav .nav-cta { border: 1px solid var(--ink); padding: .75rem 1.1rem; border-radius: 5px; margin-left: .5rem; font-weight: 600; }
+nav .nav-cta:hover { color: white; background: var(--ink); }
+.menu-toggle { display: none; }
+@media(max-width: 1050px) { nav { gap: 1.1rem; } nav .nav-cta { margin: 0; } }
+@media(max-width: 900px) {
+  .header-inner { min-height: 80px; }
+  .brand span { font-size: 2.35rem; }
+  .brand svg { width: 29px; height: 29px; }
+  .menu-toggle { display: flex; gap: .8rem; align-items: center; background: transparent; border: 0; color: var(--ink); padding: .75rem 0 .75rem .75rem; min-height: 44px; }
+  .menu-lines { display: grid; gap: 5px; width: 22px; }
+  .menu-lines i { height: 2px; background: var(--ink); transition: transform 160ms; }
+  .menu-lines.open i:first-child { transform: translateY(3.5px) rotate(45deg); }
+  .menu-lines.open i:last-child { transform: translateY(-3.5px) rotate(-45deg); }
+  nav { display: none; position: absolute; top: 100%; left: 0; right: 0; padding: 1.25rem 1.5rem 1.75rem; background: var(--ice); border-bottom: 1px solid var(--line); }
+  nav.open { display: flex; flex-direction: column; gap: .2rem; align-items: stretch; }
+  nav a { padding: .65rem .5rem; }
+  nav .nav-cta { text-align: center; margin-top: .75rem; }
+}
